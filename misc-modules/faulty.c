@@ -75,13 +75,14 @@ int faulty_init(void)
 		return result;
 	if (faulty_major == 0)
 		faulty_major = result; /* dynamic */
-
+	printk("Module faulty, successfully loaded...");
 	return 0;
 }
 
 void faulty_cleanup(void)
 {
 	unregister_chrdev(faulty_major, "faulty");
+	printk("Module faulty, successfully unloaded...");
 }
 
 module_init(faulty_init);
